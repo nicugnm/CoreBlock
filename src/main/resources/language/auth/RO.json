@@ -1,0 +1,14 @@
+{
+  "player.move": "{red}Nu poti sa te misti pana cand nu esti autorizat!",
+  "player.block_break": "{red}Nu poti sa spargi blocuri pana cand nu esti autorizat!",
+  "player.block_place": "{red}Nu poti sa pui blocuri pana cand nu esti autorizat!",
+  "player.item_frame": "{red}Nu poti sa modifici ItemFrame-ul pana cand nu esti autorizat!",
+  "player.interact": "{red}Nu poti sa interactionezi pana cand nu esti autorizat!",
+  "player.chat": "{red}Nu poti sa scrii in chat pana cand nu esti autorizat!",
+  "player.login.not_authorized.login": "{yellow}Pentru a fi autorizat trebuie sa te loghezi.",
+  "player.login.not_authorized.register": "{yellow}Pentru a fi autorizat trebuie sa te inregistrezi.",
+  "player.register.java": "{yellow}Pentru a te inregistra, foloseste /register <parola> <confirmareParola>",
+  "player.register.bedrock": "{yellow}Pentru a te inregistra, completeaza urmatoarele campuri:",
+  "player.login.java": "{yellow}Pentru a te loga, foloseste /login <password>",
+  "player.login.bedrock": "{yellow}Pentru a te loga, completeaza urmatoarele campuri:"
+}

@@ -1,0 +1,14 @@
+{
+  "player.move": "{red}You can't move until you are authentificated!",
+  "player.block_break": "{red}You can't break blocks until you are authentificated!",
+  "player.block_place": "{red}You can't place blocks until you are authentificated!",
+  "player.item_frame": "{red}You can't change ItemFrame until you are authentificated!",
+  "player.interact": "{red}You can't interact until you are authentificated!",
+  "player.chat": "{red}You can't chat until you are authorized!",
+  "player.not_authorized.login": "{yellow}To be authorized, you have to be logged in.",
+  "player.not_authorized.register": "{yellow}To be authorized, you have to be registered.",
+  "player.register.java": "{yellow}To register, use /register <password> <confirmPassword>",
+  "player.register.bedrock": "{yellow}To register, please complete the following fields:",
+  "player.login.java": "{yellow}To login, use /login <password>",
+  "player.login.bedrock": "{yellow}To login, please complete the following fields:"
+}

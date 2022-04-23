@@ -1,0 +1,7 @@
+name: CoreBlock-Roleplay
+api-version: '1.13'
+version: 1.0-SNAPSHOT
+author: coreblock-owner
+description: Just a core for Minecraft Server
+main: ro.coreblock.LoadingCore
+load: STARTUP

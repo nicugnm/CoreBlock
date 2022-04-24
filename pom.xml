@@ -11,7 +11,6 @@
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
-        <output.directory>/Users/nycuro/Desktop/Ghergu_Nicolae-Marius_An2_Grupa262/landscape/purpur/plugins</output.directory>
     </properties>
 
     <repositories>
@@ -55,38 +54,45 @@
         </dependency>
     </dependencies>
 
-    <profiles>
-        <profile>
-            <id>output</id>
-            <build>
-                <directory>${output.directory}</directory>
-            </build>
-        </profile>
-    </profiles>
-
     <build>
         <plugins>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-shade-plugin</artifactId>
-                <version>3.3.0</version>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <version>1.8</version>
                 <configuration>
-                    <createDependencyReducedPom>false</createDependencyReducedPom>
-                    <artifactSet>
-                        <excludes>
-                            <exclude>org.*</exclude>
-                        </excludes>
-                    </artifactSet>
+                    <tasks>
+                        <scp todir="${ssh.directory}"
+                             port="22" trust="true" keyfile="${ssh.private_key.localPath}"
+                             failonerror="false" verbose="true">
+                            <fileset dir="target">
+                                <include name="${artifactId}-${version}.jar" />
+                            </fileset>
+                        </scp>
+                    </tasks>
                 </configuration>
                 <executions>
                     <execution>
-                        <phase>package</phase>
+                        <id>scp</id>
+                        <phase>integration-test</phase>
                         <goals>
-                            <goal>shade</goal>
+                            <goal>run</goal>
                         </goals>
                     </execution>
                 </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.jcraft</groupId>
+                        <artifactId>jsch</artifactId>
+                        <version>0.1.53</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.apache.ant</groupId>
+                        <artifactId>ant-jsch</artifactId>
+                        <version>1.9.6</version>
+                    </dependency>
+                </dependencies>
             </plugin>
         </plugins>
     </build>
+
 </project>

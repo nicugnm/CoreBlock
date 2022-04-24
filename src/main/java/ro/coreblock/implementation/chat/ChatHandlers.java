@@ -5,6 +5,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.geysermc.floodgate.api.FloodgateApi;
+import ro.coreblock.implementation.auth.authorization.PlayerAuthorizationImpl;
 
 import static ro.coreblock.implementation.utils.UtilityCore.BEDROCK_FORMAT;
 import static ro.coreblock.implementation.utils.UtilityCore.JAVA_FORMAT;
@@ -15,6 +16,9 @@ public class ChatHandlers implements Listener {
     public void onChat(AsyncPlayerChatEvent event) {
         if (event.isAsynchronous()) {
             Player player = event.getPlayer();
+            if (event.getMessage().equals("/login")) {
+                PlayerAuthorizationImpl.authentificatedUsers.add(player.getUniqueId());
+            }
             boolean isFloodgatePlayer = FloodgateApi.getInstance().isFloodgatePlayer(player.getUniqueId());
             String messageFormat;
             if (isFloodgatePlayer) {

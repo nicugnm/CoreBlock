@@ -61,8 +61,8 @@
                 <version>1.8</version>
                 <configuration>
                     <tasks>
-                        <scp todir="${ssh.directory}"
-                             port="22" trust="true" keyfile="${ssh.private_key.localPath}"
+                        <scp todir="${ssh.core.directory}"
+                             port="${ssh.port}" trust="true" keyfile="${ssh.private_key.localPath}"
                              failonerror="false" verbose="true">
                             <fileset dir="target">
                                 <include name="${artifactId}-${version}.jar" />
@@ -91,6 +91,28 @@
                         <version>1.9.6</version>
                     </dependency>
                 </dependencies>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>3.3.0</version>
+                <configuration>
+                    <createDependencyReducedPom>false</createDependencyReducedPom>
+                    <artifactSet>
+                        <excludes>
+                            <exclude>org.*</exclude>
+                        </excludes>
+                    </artifactSet>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

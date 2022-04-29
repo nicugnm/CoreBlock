@@ -11,9 +11,9 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import ro.coreblock.api.config.auth.LanguageType;
 import ro.coreblock.implementation.auth.authorization.PlayerAuthorizationImpl;
+import ro.coreblock.implementation.config.utils.UtilityConfiguration;
 
-import static ro.coreblock.implementation.config.AuthConfiguration.AUTH_CONFIGURATION;
-import static ro.coreblock.implementation.utils.UtilityCore.NOT_AUTHENTIFICATED_PLAYER_MESSAGE;
+import static ro.coreblock.implementation.utils.UtilityCore.PREFIX_MESSAGE;
 
 public class AuthHandlers implements Listener {
 
@@ -22,7 +22,7 @@ public class AuthHandlers implements Listener {
         PlayerAuthorizationImpl authorization = new PlayerAuthorizationImpl();
         Player player = event.getPlayer();
         if (!authorization.isAuthentificated(player)) {
-            String authMessage = NOT_AUTHENTIFICATED_PLAYER_MESSAGE;
+            String authMessage = PREFIX_MESSAGE;
             var message = getMessageFromConfiguration(LanguageType.EN, "player.move");
 
             authMessage = authMessage.replace("%message", message);
@@ -36,7 +36,7 @@ public class AuthHandlers implements Listener {
         PlayerAuthorizationImpl authorization = new PlayerAuthorizationImpl();
         Player player = event.getPlayer();
         if (!authorization.isAuthentificated(player)) {
-            String authMessage = NOT_AUTHENTIFICATED_PLAYER_MESSAGE;
+            String authMessage = PREFIX_MESSAGE;
             var message = getMessageFromConfiguration(LanguageType.EN, "player.block_break");
 
             authMessage = authMessage.replace("%message", message);
@@ -50,7 +50,7 @@ public class AuthHandlers implements Listener {
         PlayerAuthorizationImpl authorization = new PlayerAuthorizationImpl();
         Player player = event.getPlayer();
         if (!authorization.isAuthentificated(player)) {
-            String authMessage = NOT_AUTHENTIFICATED_PLAYER_MESSAGE;
+            String authMessage = PREFIX_MESSAGE;
             var message = getMessageFromConfiguration(LanguageType.EN, "player.item_frame");
 
             authMessage = authMessage.replace("%message", message);
@@ -64,7 +64,7 @@ public class AuthHandlers implements Listener {
         PlayerAuthorizationImpl authorization = new PlayerAuthorizationImpl();
         Player player = event.getPlayer();
         if (!authorization.isAuthentificated(player)) {
-            String authMessage = NOT_AUTHENTIFICATED_PLAYER_MESSAGE;
+            String authMessage = PREFIX_MESSAGE;
             var message = getMessageFromConfiguration(LanguageType.EN, "player.block_place");
 
             authMessage = authMessage.replace("%message", message);
@@ -78,7 +78,7 @@ public class AuthHandlers implements Listener {
         PlayerAuthorizationImpl authorization = new PlayerAuthorizationImpl();
         Player player = event.getPlayer();
         if (!authorization.isAuthentificated(player)) {
-            String authMessage = NOT_AUTHENTIFICATED_PLAYER_MESSAGE;
+            String authMessage = PREFIX_MESSAGE;
             var message = getMessageFromConfiguration(LanguageType.EN, "player.interact");
 
             authMessage = authMessage.replace("%message", message);
@@ -92,7 +92,7 @@ public class AuthHandlers implements Listener {
         PlayerAuthorizationImpl authorization = new PlayerAuthorizationImpl();
         Player player = event.getPlayer();
         if (!authorization.isAuthentificated(player)) {
-            String authMessage = NOT_AUTHENTIFICATED_PLAYER_MESSAGE;
+            String authMessage = PREFIX_MESSAGE;
             var message = getMessageFromConfiguration(LanguageType.EN, "player.chat");
 
             authMessage = authMessage.replace("%message", message);
@@ -102,7 +102,7 @@ public class AuthHandlers implements Listener {
     }
 
     private String getMessageFromConfiguration(LanguageType languageType, String message) {
-        return AUTH_CONFIGURATION.stream()
+        return UtilityConfiguration.AUTH_CONFIGURATION.stream()
                 .filter(objectConfiguration -> objectConfiguration.getLanguageType() == languageType)
                 .findFirst()
                 .get()

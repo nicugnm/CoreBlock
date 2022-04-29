@@ -5,14 +5,17 @@ import lombok.experimental.UtilityClass;
 import org.bukkit.ChatColor;
 import org.bukkit.Server;
 import ro.coreblock.LoadingCore;
-import ro.coreblock.api.config.ConfigurationFactory;
+import ro.coreblock.api.config.ConfigurationType;
 import ro.coreblock.implementation.auth.handlers.AuthHandlers;
 import ro.coreblock.implementation.chat.ChatHandlers;
+import ro.coreblock.implementation.config.ConfigurationFactory;
+import ro.coreblock.implementation.config.utils.UtilityConfiguration;
 
 @UtilityClass
 public class UtilityCore {
 
     public static final String AUTH_PATH = "language/auth";
+    public static final String PROTECTION_PATH = "language/protection";
 
     private static final String SPACE = " ";
     private static final String CHAT_PREFIX_BEFORE_MESSAGE = ChatColor.YELLOW + "»";
@@ -24,7 +27,7 @@ public class UtilityCore {
     public static final String BEDROCK_FORMAT = ChatColor.BLACK + "[" + ChatColor.RED + "BE" + ChatColor.BLACK + "]" + SPACE + ChatColor.GRAY+ "%name" + SPACE + CHAT_PREFIX_BEFORE_MESSAGE + SPACE + ChatColor.GRAY + "%message";
     public static final String JAVA_FORMAT = ChatColor.BLACK + "[" + ChatColor.RED + "PC" + ChatColor.BLACK + "]" + SPACE + ChatColor.GRAY + "%name" + SPACE + CHAT_PREFIX_BEFORE_MESSAGE + SPACE + ChatColor.GRAY + "%message";
 
-    public static final String NOT_AUTHENTIFICATED_PLAYER_MESSAGE = ChatColor.RED.toString() + ChatColor.BOLD + "!" + ChatColor.RESET + SPACE + ChatColor.GRAY + "%message";
+    public static final String PREFIX_MESSAGE = ChatColor.RED.toString() + ChatColor.BOLD + "!" + ChatColor.RESET + SPACE + ChatColor.GRAY + "%message";
 
     public void registerEvents(Server server, LoadingCore main) {
         server.getPluginManager().registerEvents(new ChatHandlers(), main);
@@ -32,9 +35,14 @@ public class UtilityCore {
     }
 
     @SneakyThrows
-    public void registerMultilanguage(LoadingCore main) {
+    public static void registerMultilanguage(LoadingCore main) {
         ConfigurationFactory configurationFactory = new ConfigurationFactory();
-        configurationFactory.getConfiguration(ConfigurationFactory.ConfigurationType.AUTH)
-                .createAuthConfiguration(main);
+        var authConfiguration = configurationFactory.getConfiguration(ConfigurationType.AUTH)
+                .handleConfiguration(main);
+        var protectionConfiguration = configurationFactory.getConfiguration(ConfigurationType.PROTECTION)
+                .handleConfiguration(main);
+
+        UtilityConfiguration.AUTH_CONFIGURATION = authConfiguration;
+        UtilityConfiguration.PROTECTION_CONFIGURATION = protectionConfiguration;
     }
 }

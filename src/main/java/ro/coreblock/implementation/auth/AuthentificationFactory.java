@@ -1,12 +1,14 @@
-package ro.coreblock.api.auth;
+package ro.coreblock.implementation.auth;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 import ro.coreblock.api.auth.authentification.AuthentificationApi;
 import ro.coreblock.implementation.auth.authentification.BedrockAuthentificationImpl;
 import ro.coreblock.implementation.auth.authentification.bedrock.JavaAuthentificationImpl;
 
-public interface AuthentificationFactory {
+public class AuthentificationFactory {
 
-    default AuthentificationApi getAuthentificationType(AuthentificationType authentificationType) {
+    public AuthentificationApi getAuthentificationType(AuthentificationType authentificationType) {
         switch (authentificationType) {
             case BEDROCK_PLAYER -> new BedrockAuthentificationImpl();
             case JAVA_PLAYER -> new JavaAuthentificationImpl();
@@ -14,8 +16,12 @@ public interface AuthentificationFactory {
         return null;
     }
 
-    enum AuthentificationType {
-        BEDROCK_PLAYER,
-        JAVA_PLAYER
+    @AllArgsConstructor
+    public enum AuthentificationType {
+        BEDROCK_PLAYER("BEDROCK_PLAYER"),
+        JAVA_PLAYER("JAVA_PLAYER");
+
+        @Getter
+        private final String name;
     }
 }

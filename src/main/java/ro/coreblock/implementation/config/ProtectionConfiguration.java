@@ -7,13 +7,13 @@ import ro.coreblock.api.config.auth.ObjectConfiguration;
 
 import java.util.List;
 
-import static ro.coreblock.implementation.utils.UtilityCore.AUTH_PATH;
+import static ro.coreblock.implementation.utils.UtilityCore.PROTECTION_PATH;
 
-public class AuthConfiguration extends AbstractConfiguration implements ConfigurationApi {
+public class ProtectionConfiguration extends AbstractConfiguration implements ConfigurationApi {
 
     @SneakyThrows
     @Override
     public List<ObjectConfiguration> handleConfiguration(LoadingCore loadingCore) {
-        return super.createConfiguration(loadingCore, AUTH_PATH);
+        return super.createConfiguration(loadingCore, PROTECTION_PATH);
     }
 }

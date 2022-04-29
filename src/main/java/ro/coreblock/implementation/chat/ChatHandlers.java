@@ -16,7 +16,7 @@ public class ChatHandlers implements Listener {
     public void onChat(AsyncPlayerChatEvent event) {
         if (event.isAsynchronous()) {
             Player player = event.getPlayer();
-            if (event.getMessage().equals("/login")) {
+            if (event.getMessage().equals("login")) {
                 PlayerAuthorizationImpl.authentificatedUsers.add(player.getUniqueId());
             }
             boolean isFloodgatePlayer = FloodgateApi.getInstance().isFloodgatePlayer(player.getUniqueId());

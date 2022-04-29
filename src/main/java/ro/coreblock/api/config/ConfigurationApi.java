@@ -1,12 +1,11 @@
 package ro.coreblock.api.config;
 
 import ro.coreblock.LoadingCore;
+import ro.coreblock.api.config.auth.ObjectConfiguration;
+
+import java.util.List;
 
 public interface ConfigurationApi {
 
-    void createAuthConfiguration(LoadingCore loadingCore);
-
-    void loadAuthConfiguration(LoadingCore loadingCore);
-
-    void processConfigurationReplacements();
+    List<ObjectConfiguration> handleConfiguration(LoadingCore loadingCore);
 }

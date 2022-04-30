@@ -95,12 +95,14 @@ public abstract class AbstractConfiguration {
                 .peek(option -> {
                     AtomicReference<Map<String, String>> temporaryMap = new AtomicReference<>();
                     option.getLanguageSet().forEach((k, v) -> {
-                        option.getLanguageSet().replace(k, v, v.replace("{red}", ChatColor.RED.toString()));
-                        option.getLanguageSet().replace(k, v, v.replace("{yellow}", ChatColor.YELLOW.toString()));
-                        option.getLanguageSet().replace(k, v, v.replace("{gray}", ChatColor.GRAY.toString()));
-                        option.getLanguageSet().replace(k, v, v.replace("{bold}", ChatColor.BOLD.toString()));
-                        option.getLanguageSet().replace(k, v, v.replace("{dark_red}", ChatColor.DARK_RED.toString()));
-                        option.getLanguageSet().replace(k, v, v.replace("{reset}", ChatColor.RESET.toString()));
+                        var initialValue = v;
+                        v = v.replace("{red}", ChatColor.RED.toString());
+                        v = v.replace("{yellow}", ChatColor.YELLOW.toString());
+                        v = v.replace("{gray}", ChatColor.GRAY.toString());
+                        v = v.replace("{bold}", ChatColor.BOLD.toString());
+                        v = v.replace("{dark_red}", ChatColor.DARK_RED.toString());
+                        v = v.replace("{reset}", ChatColor.RESET.toString());
+                        option.getLanguageSet().replace(k, initialValue, v);
                         temporaryMap.set(option.getLanguageSet());
                     });
                     option.setLanguageSet(temporaryMap.get());

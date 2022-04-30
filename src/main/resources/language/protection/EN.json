@@ -1,4 +1,4 @@
 {
-  "player.swimming.title": "{red}! Atention !",
+  "player.swimming.title": "{dark_red}{bold}! {reset}{red}Atention {dark_red}{bold}!{reset}",
   "player.swimming.subtitle": "{gray}You are not allowed to swim! Return or you will die!"
 }

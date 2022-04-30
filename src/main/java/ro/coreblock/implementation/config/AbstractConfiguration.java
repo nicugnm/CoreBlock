@@ -8,8 +8,8 @@ import com.fasterxml.jackson.databind.json.JsonMapper;
 import lombok.SneakyThrows;
 import org.bukkit.ChatColor;
 import ro.coreblock.LoadingCore;
-import ro.coreblock.api.config.auth.LanguageType;
-import ro.coreblock.api.config.auth.ObjectConfiguration;
+import ro.coreblock.api.config.LanguageType;
+import ro.coreblock.api.config.ObjectConfiguration;
 
 import java.io.*;
 import java.nio.file.Files;
@@ -98,6 +98,9 @@ public abstract class AbstractConfiguration {
                         option.getLanguageSet().replace(k, v, v.replace("{red}", ChatColor.RED.toString()));
                         option.getLanguageSet().replace(k, v, v.replace("{yellow}", ChatColor.YELLOW.toString()));
                         option.getLanguageSet().replace(k, v, v.replace("{gray}", ChatColor.GRAY.toString()));
+                        option.getLanguageSet().replace(k, v, v.replace("{bold}", ChatColor.BOLD.toString()));
+                        option.getLanguageSet().replace(k, v, v.replace("{dark_red}", ChatColor.DARK_RED.toString()));
+                        option.getLanguageSet().replace(k, v, v.replace("{reset}", ChatColor.RESET.toString()));
                         temporaryMap.set(option.getLanguageSet());
                     });
                     option.setLanguageSet(temporaryMap.get());

@@ -1,7 +1,7 @@
 package ro.coreblock.implementation.config.utils;
 
 import lombok.experimental.UtilityClass;
-import ro.coreblock.api.config.auth.ObjectConfiguration;
+import ro.coreblock.api.config.ObjectConfiguration;
 
 import java.util.ArrayList;
 import java.util.List;

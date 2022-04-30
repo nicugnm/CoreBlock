@@ -3,7 +3,7 @@ package ro.coreblock.implementation.config;
 import lombok.SneakyThrows;
 import ro.coreblock.LoadingCore;
 import ro.coreblock.api.config.ConfigurationApi;
-import ro.coreblock.api.config.auth.ObjectConfiguration;
+import ro.coreblock.api.config.ObjectConfiguration;
 
 import java.util.List;
 

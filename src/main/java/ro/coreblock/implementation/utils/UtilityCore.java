@@ -10,6 +10,7 @@ import ro.coreblock.implementation.auth.handlers.AuthHandlers;
 import ro.coreblock.implementation.chat.ChatHandlers;
 import ro.coreblock.implementation.config.ConfigurationFactory;
 import ro.coreblock.implementation.config.utils.UtilityConfiguration;
+import ro.coreblock.implementation.protection.handlers.ProtectionHandlers;
 
 @UtilityClass
 public class UtilityCore {
@@ -22,6 +23,9 @@ public class UtilityCore {
 
     public static final ChatColor INFO_ChatColor = ChatColor.GRAY;
 
+    public static final String TITLE = ChatColor.BOLD.toString() + ChatColor.DARK_RED + "!" + " " + ChatColor.RESET + ChatColor.RED + "%titleMessage";
+    public static final String SUBTITLE = ChatColor.GRAY + "%subtitleMessage";
+
     public static final String PLUGIN_TAG = ChatColor.GREEN + "[" + ChatColor.YELLOW + "CoreBlock" + ChatColor.GREEN + "]" + SPACE;
 
     public static final String BEDROCK_FORMAT = ChatColor.BLACK + "[" + ChatColor.RED + "BE" + ChatColor.BLACK + "]" + SPACE + ChatColor.GRAY+ "%name" + SPACE + CHAT_PREFIX_BEFORE_MESSAGE + SPACE + ChatColor.GRAY + "%message";
@@ -32,6 +36,7 @@ public class UtilityCore {
     public void registerEvents(Server server, LoadingCore main) {
         server.getPluginManager().registerEvents(new ChatHandlers(), main);
         server.getPluginManager().registerEvents(new AuthHandlers(), main);
+        server.getPluginManager().registerEvents(new ProtectionHandlers(), main);
     }
 
     @SneakyThrows

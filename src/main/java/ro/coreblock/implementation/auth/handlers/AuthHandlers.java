@@ -9,7 +9,7 @@ import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
-import ro.coreblock.api.config.auth.LanguageType;
+import ro.coreblock.api.config.LanguageType;
 import ro.coreblock.implementation.auth.authorization.PlayerAuthorizationImpl;
 import ro.coreblock.implementation.config.utils.UtilityConfiguration;
 

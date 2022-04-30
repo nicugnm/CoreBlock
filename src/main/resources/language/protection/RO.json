@@ -1,3 +1,4 @@
 {
-  "player.swimming": "{gray}Nu ai voie sa innoti. Intoarce-te sau vei muri!"
+  "player.swimming.title": "{red}! Atentie !",
+  "player.swimming.subtitle": "{gray}Nu ai voie sa innoti! Intoarce-te sau vei muri!"
 }

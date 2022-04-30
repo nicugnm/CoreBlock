@@ -1,4 +1,4 @@
-package ro.coreblock.api.config.auth;
+package ro.coreblock.api.config;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
